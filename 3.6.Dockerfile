@@ -1,8 +1,11 @@
+FROM amelia/dhparam:latest as dhparam
 FROM alpine:3.6 as production
 
 LABEL maintainer=amelia@dorks.io
 
 ADD harden.sh ./harden.sh
+
+COPY --from=dhparam /etc/ssl/dhparam.pem /etc/ssl/dhparam.pem
 
 RUN apk --update add ca-certificates \
     && update-ca-certificates \
