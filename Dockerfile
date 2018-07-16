@@ -5,7 +5,7 @@ LABEL maintainer=amelia@dorks.io
 
 ADD harden.sh ./harden.sh
 
-COPY --from=dhparam /etc/ssl/dhparam.pem /etc/ssl/dhparam.pem
+COPY --from=dhparam /dhparam.pem /etc/ssl/dhparam.pem
 
 RUN apk --update add ca-certificates \
     && update-ca-certificates \
